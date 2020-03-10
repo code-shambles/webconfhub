@@ -1,0 +1,16 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+
+# dependencies
+/node_modules
+
+# misc
+npm-debug.log
+.DS_Store
+yarn.lock
+yarn-error.log
+package-lock.json
+*.zip
+/src/config.js

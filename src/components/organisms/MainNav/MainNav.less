@@ -1,0 +1,106 @@
+@import (reference) '../../../styles/var.less';
+
+#wch-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999999;
+  height: var(--header-height);
+  box-sizing: border-box;
+  font-size: var(--header-font-size);
+  background-color: var(--header-bg-color);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.15);
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.6;
+    background-image: url('https://frontconf.com/static/images/backgrounds/Background_element_Back_1.3a994a67add8.svg');
+    background-size: cover;
+    background-position: center;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+  }
+  #wch-logo-link {
+    display: block;
+    height: var(--header-height);
+    width: auto;
+    max-width: 120px;
+    margin: 0 30px 0 10px;
+  }
+  #wch-logo {
+    display: inline-block;
+    height: var(--header-height);
+  }
+  a,
+  button {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: background-color 200ms ease, color 200ms ease;
+    &:hover,
+    &:focus {
+      color: var(--link-color-active);
+    }
+  }
+  .wch-navlink {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: var(--header-font-size);
+    line-height: var(--header-line-height);
+    color: var(--link-color);
+    border-radius: 0.1rem;
+    border: 1px solid transparent;
+    background-color: transparent;
+    &:hover,
+    &:focus {
+      color: var(--link-color-active);
+      cursor: pointer;
+    }
+    &.wch-active,
+    &.wch-active:hover,
+    &.wch-active:focus {
+      color: var(--header-bg-color);
+      background-color: var(--link-color);
+    }
+
+    i {
+      margin-left: calc(var(--header-font-size) / 4);
+      vertical-align: middle;
+      font-size: 0.75em;
+      line-height: 0;
+    }
+
+    &.wch-navlink-room {
+      margin-right: 1rem;
+      color: var(--room-color);
+      border-color: var(--room-color);
+      i {
+        margin-left: 0;
+        margin-right: calc(var(--header-font-size) / 4);
+        vertical-align: middle;
+        font-size: 1.5em;
+        line-height: 0;
+      }
+      &.wch-active,
+      &:hover,
+      &:focus {
+        color: var(--header-bg-color);
+        background-color: var(--room-color);
+      }
+    }
+
+    &.wch-navlink-layer {
+    }
+
+    &.wch-navlink-external {
+    }
+  }
+}

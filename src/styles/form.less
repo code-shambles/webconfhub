@@ -1,0 +1,49 @@
+@input-paddingX: 1rem;
+@input-paddingY: 0.7rem;
+@input-outerHeight: 3.8rem;
+@input-bg: #fff;
+@input-color: @clr-text;
+@input-borderColor: @clr-whale;
+@input-hover-borderColor: @clr-primary;
+@input-borderWidth: 1px;
+@input-focus-borderWidth: 3px;
+@input-borderRadius: 1px;
+@input-fontSize: 1.6rem;
+
+.input() {
+  .bbox;
+  .prel;
+  padding: @input-paddingY @input-paddingX;
+  height: auto;
+  min-height: @input-outerHeight;
+  color: @input-color;
+  font-size: @input-fontSize;
+  line-height: 1.25em;
+  background-color: @input-bg;
+  border: none;
+  border-bottom: @input-borderWidth solid @input-borderColor;
+  border-radius: @input-borderRadius;
+  outline: none;
+  transition: border @a7n-trans, box-shadow @a7n-trans;
+  &:hover {
+    border-bottom-color: @input-hover-borderColor;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  &:focus {
+    border-bottom-color: @input-hover-borderColor;
+    border-bottom-width: @input-focus-borderWidth;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  &.error {
+    border-bottom-color: @clr-error;
+    &:hover,
+    &:focus {
+      border-bottom-color: @clr-error;
+    }
+  }
+}
+
+input,
+textarea {
+  .input;
+}

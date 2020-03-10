@@ -1,0 +1,98 @@
+@import (reference) './styles/var.less';
+
+:root {
+  --font-size: 1.6rem;
+  --header-height: 50px;
+  --header-font-size: 1.6rem;
+  --header-line-height: 1.8rem;
+  --header-bg-color: @clr-header-bg;
+  --link-color: @clr-link;
+  --link-color-active: @clr-link-active;
+  --room-color: @clr-room;
+  --room-color-active: @clr-room-active;
+  --main-bg-color: @clr-main-bg;
+  --main-color: @clr-text;
+  --padding-std: 20px;
+  --overlay-bg-color: @clr-overlay-bg;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+  font-size: 10px;
+  font-weight: lighter;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 0;
+  font-weight: lighter;
+}
+h1 {
+  font-size: 3.4rem;
+}
+h2 {
+  font-size: 2.7rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.6rem;
+}
+h5 {
+  font-size: 1.3rem;
+}
+
+a {
+  text-decoration: none;
+  color: @clr-link;
+  &:active,
+  &:hover,
+  &:focus {
+    color: @clr-link-active;
+  }
+}
+
+ul {
+  .mp0;
+  list-style-type: none;
+  li {
+    .m0;
+  }
+}
+
+hr {
+  border: 0 none;
+  .border(top);
+}
+
+:disabled {
+  opacity: 0.6;
+}
+
+main.wch-main {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
+  box-sizing: border-box;
+  color: var(--main-color);
+  font-size: var(--font-size);
+  background-color: var(--main-bg-color);
+}
+
+.wch-error-msg {
+  padding: var(--padding-std);
+  color: @clr-error;
+  background-color: fade(@clr-error, 20%);
+  border: 1px solid @clr-error;
+  border-radius: 10px;
+}

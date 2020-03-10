@@ -1,0 +1,66 @@
+@import (reference) '../../../styles/var.less';
+
+main#wch-home {
+  --section-padding-x: 45px;
+  --section-padding-y: 30px;
+  --section-padding: var(--section-padding-y) var(--section-padding-x);
+  --item-padding-x: 2vw;
+  --item-padding-y: 2vh;
+  --item-padding: var(--item-padding-x) var(--item-padding-y);
+
+  overflow: auto;
+  .wch-welcome {
+    padding: var(--section-padding);
+    background-color: hsla(0, 0%, 100%, 0.075);
+  }
+  .wch-rooms {
+    padding: var(--section-padding);
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: calc(var(--item-padding-y) * -1) calc(var(--item-padding-x) * -1);
+      li {
+        flex-grow: 1;
+        width: 30vw;
+        min-width: 300px;
+        max-width: 500px;
+        padding: var(--item-padding);
+        a {
+          --heading-height: 40px;
+          .prel;
+          .bbox;
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: calc(var(--item-padding-y) * 1.5)
+            calc(var(--item-padding-x) * 2);
+          text-align: center;
+          color: var(--main-bg-color);
+          background-color: var(--room-color);
+          background-image: linear-gradient(-30deg, #00000033, #ffffff33);
+          transition: background-color 200ms ease;
+          border-radius: 6%;
+          &:hover,
+          &:focus {
+            background-color: var(--room-color-active);
+          }
+          > i {
+            font-size: 12vw;
+            color: @clr-light;
+          }
+          h3 {
+            font-size: 4vw;
+            color: @clr-light;
+            margin-bottom: 1vw;
+          }
+          p {
+            margin: 0;
+          }
+          .wch-btn {
+            margin-top: 1vw;
+          }
+        }
+      }
+    }
+  }
+}

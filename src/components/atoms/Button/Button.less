@@ -1,0 +1,141 @@
+@import (reference) '../../../styles/var.less';
+
+.wch-btn {
+  @paddingX: 1.75rem;
+  @trans-dur: @a7n-dur-slow;
+  @trans-func: @a7n-func;
+  @trans: @a7n-trans-slow;
+  .bg-hidden() {
+    .pseudo;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+    border-radius: 50%;
+  }
+
+  .input;
+  .textShadow;
+  border: none;
+  transition: box-shadow @trans;
+  cursor: pointer;
+
+  .m0;
+  color: #fff;
+  padding-left: @paddingX;
+  padding-right: @paddingX;
+  background: @clr-primary;
+  transition: inherit, color @trans;
+  .wch-btn-content {
+    .prel;
+    z-index: 1;
+  }
+  &:before,
+  &:after {
+    .bg-hidden;
+  }
+  &:before {
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: all @trans;
+  }
+  &:after {
+    background-color: @clr-primary;
+    transition: all @trans-dur*0.75 @trans-func;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+  }
+  &:not([disabled]) {
+    &:hover,
+    &:focus {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      border: none;
+      &:before,
+      &:after {
+        border-radius: 0;
+      }
+      &:before {
+        .spanSize;
+      }
+      &:after {
+        top: 0.25em;
+        right: 0.25em;
+        bottom: 0.25em;
+        left: 0.25em;
+        transition: all @trans-dur*0.75 @trans-dur*0.5 @trans-func;
+      }
+    }
+    &:active {
+      border: none;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(0, 0, 0, 0.3);
+      &:before,
+      &:after {
+        .bg-hidden;
+      }
+    }
+  }
+  &.wch-btn-ghost {
+    padding: calc(@input-paddingY - 1px) calc(@paddingX - 1px);
+    color: @clr-primary;
+    text-shadow: none;
+    background-color: transparent;
+    border: 1px solid $color;
+    &:before {
+      background-color: fade(@clr-primary, 90%);
+    }
+    &:after {
+      background-color: @clr-primary;
+    }
+    &:not([disabled]) {
+      &:hover,
+      &:focus {
+        color: #fff;
+        border: 1px solid @clr-primary;
+      }
+      &:active {
+        color: @clr-primary;
+        border: 1px solid $color;
+      }
+    }
+  }
+  &.wch-btn-black {
+    .btn-color(@clr-dark);
+  }
+  &.wch-btn-success {
+    .btn-color(@clr-success);
+  }
+  &.wch-btn-warning {
+    .btn-color(@clr-warning);
+  }
+  &.wch-btn-danger {
+    .btn-color(@clr-danger);
+  }
+}
+
+.btn-color(@clr-name) {
+  background-color: @clr-name;
+  &:after {
+    background-color: @clr-name;
+  }
+  &.wch-btn-ghost {
+    color: @clr-name;
+    background-color: transparent;
+    border-color: $color;
+    &:before {
+      background-color: @clr-name;
+    }
+    &:not([disabled]) {
+      &:hover,
+      &:focus {
+        border: 1px solid @clr-name;
+      }
+      &:active {
+        color: @clr-name;
+      }
+    }
+  }
+}
+
+@media print {
+}
