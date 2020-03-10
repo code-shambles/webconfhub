@@ -64,21 +64,21 @@ const renderExternalItems = externalLinks =>
       ))
     : null;
 
-const MainNav = ({ htmlTitle, rooms, mainMenu, locationPath }) => {
+const MainNav = ({ branding, mainMenu, rooms, locationPath }) => {
   useEffect(() => {
-    document.title = `${htmlTitle} | WebConf Hub`;
-  }, [htmlTitle]);
+    document.title = `${branding.name} | WebConf Hub`;
+  }, [branding.name]);
 
   return (
     <header id="wch-header">
       <nav>
         <ul>
           <li>
-            <NavLink to="/" title={mainMenu.logo.title} id="wch-logo-link">
+            <NavLink to="/" title={branding.logo.title} id="wch-logo-link">
               <img
                 id="wch-logo"
-                src={mainMenu.logo.src}
-                alt={mainMenu.logo.alt}
+                src={branding.logo.src}
+                alt={branding.logo.alt}
               />
             </NavLink>
           </li>
@@ -91,13 +91,14 @@ const MainNav = ({ htmlTitle, rooms, mainMenu, locationPath }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  htmlTitle: state.config.conference.name,
-  logo: { ...state.config.logo },
-  rooms: [...state.config.rooms],
-  currentRoomId: ownProps.match.params.roomId,
-  locationPath: ownProps.location.pathname,
-  mainMenu: { ...state.config.mainMenu },
-});
+const mapStateToProps = (state, ownProps) => {
+  console.log(state);
+  return {
+    branding: { ...state.config.branding },
+    rooms: [...state.config.rooms],
+    mainMenu: { ...state.config.mainMenu },
+    locationPath: ownProps.location.pathname,
+  };
+};
 
 export default withRouter(connect(mapStateToProps)(MainNav));

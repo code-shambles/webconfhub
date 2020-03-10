@@ -23,18 +23,18 @@ const renderRooms = rooms =>
       ))}
     </ul>
   ) : (
-    <p className="wch-error-msg">Config error: No conference rooms found!</p>
+    <p className="wch-error-msg">Config error: No streaming rooms found!</p>
   );
 
-const HomePage = ({ conference, rooms }) => {
+const HomePage = ({ branding, rooms }) => {
   return (
     <main id="wch-home" className="wch-main">
       <section className="wch-welcome">
-        <h1>{conference.name}</h1>
-        <h3>{conference.welcome}</h3>
+        <h1>{branding.name}</h1>
+        <h3>{branding.welcome}</h3>
       </section>
       <section className="wch-rooms">
-        <h2>Conference Rooms</h2>
+        <h2>Streaming Rooms</h2>
         {renderRooms(rooms)}
       </section>
     </main>
@@ -43,7 +43,7 @@ const HomePage = ({ conference, rooms }) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    conference: { ...state.config.conference },
+    branding: { ...state.config.branding },
     rooms: [...state.config.rooms],
   };
 };

@@ -50,8 +50,8 @@ const Overlay = ({ layerLinks, locationPath }) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    layerLinks: [...state.config.mainMenu.layerLinks],
-    rooms: [...state.config.rooms],
+    layerLinks: [...(state.config.mainMenu.layerLinks || [])],
+    rooms: [...(state.config.rooms || [])],
     locationPath: ownProps.location.pathname,
   };
 };

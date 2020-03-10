@@ -16,15 +16,19 @@ main#wch-home {
   .wch-rooms {
     padding: var(--section-padding);
     ul {
-      display: flex;
-      flex-wrap: wrap;
-      margin: calc(var(--item-padding-y) * -1) calc(var(--item-padding-x) * -1);
+      display: grid;
+      grid-template-columns: 32% 32% 32%;
+      grid-column-gap: 2%;
+      grid-row-gap: 2%;
+      margin: var(--item-padding-y) 0 0;
+
+      @media only screen and (max-width: 500px) {
+        grid-template-columns: 100%;
+      }
+      @media only screen and (max-width: 1000px) {
+        grid-template-columns: 49% 49%;
+      }
       li {
-        flex-grow: 1;
-        width: 30vw;
-        min-width: 300px;
-        max-width: 500px;
-        padding: var(--item-padding);
         a {
           --heading-height: 40px;
           .prel;
@@ -33,7 +37,8 @@ main#wch-home {
           width: 100%;
           height: 100%;
           padding: calc(var(--item-padding-y) * 1.5)
-            calc(var(--item-padding-x) * 2);
+            calc(var(--item-padding-x) * 2)
+            calc(var(--item-padding-y) * 1.5 + 50px);
           text-align: center;
           color: var(--main-bg-color);
           background-color: var(--room-color);
@@ -57,7 +62,10 @@ main#wch-home {
             margin: 0;
           }
           .wch-btn {
-            margin-top: 1vw;
+            .pabs;
+            bottom: calc(var(--item-padding-y) * 1.5);
+            width: 110px;
+            left: calc(50% - 55px);
           }
         }
       }

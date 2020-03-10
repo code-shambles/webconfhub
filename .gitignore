@@ -13,4 +13,5 @@ yarn.lock
 yarn-error.log
 package-lock.json
 *.zip
-/src/config.js
+/src/config/*
+!/src/config/example
