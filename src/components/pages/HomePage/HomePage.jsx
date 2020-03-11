@@ -10,7 +10,7 @@ const renderRooms = rooms =>
   Array.isArray(rooms) ? (
     <ul>
       {rooms.map(room => (
-        <li key={room.id}>
+        <li key={room.id} className={`wch-room-tile wch-room-tile-${room.id}`}>
           <Link to={`/room/${room.id}`}>
             <i className="lni lni-display-alt"></i>
             <h3>{room.name}</h3>

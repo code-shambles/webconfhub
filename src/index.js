@@ -8,6 +8,8 @@ import { initConfig } from './redux/actions';
 import { HashRouter as Router } from 'react-router-dom';
 import MainRoute from './routes/MainRoute.jsx';
 
+import { Setup } from './components';
+
 import './index.less';
 
 const store = configureStore();
@@ -17,6 +19,7 @@ const rootElement = document.getElementById('app');
 
 render(
   <Provider store={store}>
+    <Setup />
     <Router>
       <MainRoute />
     </Router>

@@ -92,7 +92,6 @@ const MainNav = ({ branding, mainMenu, rooms, locationPath }) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     branding: { ...state.config.branding },
     rooms: [...state.config.rooms],

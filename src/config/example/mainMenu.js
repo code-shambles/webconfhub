@@ -1,6 +1,6 @@
 /* Copy this file to /src/config and make your settings */
 
-/* Configure your additional menu items */
+/* Configure your menu items */
 const mainMenu = {
   /* Add menu links as overlays. The content is in an iframe and layered over the webinar widget, so users can stay present */
   layerLinks: [

@@ -1,6 +1,6 @@
 /* Copy this file to /src/config and make your settings */
 
-/* Configure ione or more conference rooms */
+/* Configure one or more conference rooms. Use an array also for 1 room */
 const rooms = [
   {
     /* Only use lowercase letters, numbers, and the hyphen '-' as id */

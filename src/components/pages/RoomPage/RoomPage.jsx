@@ -1,6 +1,6 @@
-import React, { memo, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import './RoomPage.less';
 

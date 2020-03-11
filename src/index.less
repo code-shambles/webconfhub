@@ -2,23 +2,27 @@
 
 :root {
   --font-size: 1.6rem;
-  --header-height: 50px;
+  --header-height: 60px;
   --header-font-size: 1.6rem;
   --header-line-height: 1.8rem;
   --header-bg-color: @clr-header-bg;
+  --header-bg-image: 'none';
   --link-color: @clr-link;
   --link-color-active: @clr-link-active;
+  --error-color: @clr-error;
   --room-color: @clr-room;
   --room-color-active: @clr-room-active;
   --main-bg-color: @clr-main-bg;
   --main-color: @clr-text;
-  --padding-std: 20px;
+  --box-bg-color: hsla(0, 0%, 100%, 0.075);
   --overlay-bg-color: @clr-overlay-bg;
+  --std-spacing-x: 2vw;
+  --std-spacing-y: 2vh;
+  --std-spacing: var(--std-spacing-y) var(--std-spacing-x);
 }
 html,
 body {
-  margin: 0;
-  padding: 0;
+  .mp0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -53,11 +57,11 @@ h5 {
 
 a {
   text-decoration: none;
-  color: @clr-link;
+  color: var(--link-color);
   &:active,
   &:hover,
   &:focus {
-    color: @clr-link-active;
+    color: var(--link-color-active);
   }
 }
 
@@ -79,20 +83,19 @@ hr {
 }
 
 main.wch-main {
-  position: relative;
-  width: 100vw;
+  .prel;
+  .vw100;
+  .bbox;
   height: calc(100vh - var(--header-height));
   margin-top: var(--header-height);
-  box-sizing: border-box;
   color: var(--main-color);
   font-size: var(--font-size);
   background-color: var(--main-bg-color);
 }
 
 .wch-error-msg {
-  padding: var(--padding-std);
-  color: @clr-error;
-  background-color: fade(@clr-error, 20%);
-  border: 1px solid @clr-error;
+  padding: var(---std-spacing);
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
   border-radius: 10px;
 }

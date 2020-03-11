@@ -16,4 +16,8 @@ import HomePage from './pages/HomePage';
 
 /* templates */
 
-export { Button, Room, MainNav, Overlay, RoomPage, HomePage };
+/* other */
+
+import Setup from './misc/Setup';
+
+export { Button, Room, MainNav, Overlay, RoomPage, HomePage, Setup };
