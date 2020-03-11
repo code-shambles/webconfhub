@@ -5,6 +5,7 @@ import Button from './atoms/Button';
 import Room from './atoms/Room';
 
 /* molecules */
+import AdBar from './molecules/AdBar';
 
 /* organisms */
 import MainNav from './organisms/MainNav';
@@ -20,4 +21,4 @@ import HomePage from './pages/HomePage';
 
 import Setup from './misc/Setup';
 
-export { Button, Room, MainNav, Overlay, RoomPage, HomePage, Setup };
+export { Button, Room, AdBar, MainNav, Overlay, RoomPage, HomePage, Setup };

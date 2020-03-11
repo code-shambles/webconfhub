@@ -1,0 +1,71 @@
+@import (reference) '../../../styles/var.less';
+
+.wch-adbar {
+  --adbar-header-height: 28px;
+  --adbar-padding-x: calc(var(--std-spacing-x) / 2);
+  --adbar-padding-y: calc(var(--std-spacing-y) / 2);
+
+  .pfix;
+  .bbox;
+  height: var(--adbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99998;
+  padding: var(--adbar-padding-y) var(--adbar-padding-x) var(--adbar-padding-y)
+    calc(var(--adbar-padding-x) * 2 + var(--adbar-header-height));
+  color: @clr-dark;
+  font-size: @fontSize-sm;
+  background-color: @clr-light;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.15);
+  header {
+    .pabs;
+    left: calc(var(--adbar-header-height));
+    bottom: 0;
+    width: var(--adbar-height);
+    height: var(--adbar-header-height);
+    line-height: var(--adbar-header-height);
+    text-align: center;
+    background-color: @clr-adbar-header-bg;
+    transform: rotateZ(-90deg);
+    transform-origin: bottom left;
+  }
+  a {
+    .dflex;
+    color: @clr-dark;
+    img {
+      .dinlbl;
+      height: calc(var(--adbar-height) - var(--adbar-padding-y) * 2);
+      margin-right: calc(var(--adbar-padding-x) * 2);
+    }
+    article {
+      padding-top: 3px;
+      h2 {
+        .dinlbl;
+        margin-top: 3px;
+        margin-bottom: 0;
+        border-bottom: 1px dotted @clr-dark;
+        i {
+          &:first-child {
+            margin-right: 0.3em;
+            font-size: 0.9em;
+          }
+          &:last-child {
+            font-size: 0.7em;
+            margin-left: 0.5em;
+          }
+        }
+      }
+    }
+    &:hover,
+    &:active {
+      color: @clr-dark;
+      article {
+        padding-top: 3px;
+        h2 {
+          border-bottom-style: solid;
+        }
+      }
+    }
+  }
+}

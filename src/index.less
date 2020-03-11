@@ -16,6 +16,7 @@
   --main-color: @clr-text;
   --box-bg-color: hsla(0, 0%, 100%, 0.075);
   --overlay-bg-color: @clr-overlay-bg;
+  --adbar-height: 70px;
   --std-spacing-x: 2vw;
   --std-spacing-y: 2vh;
   --std-spacing: var(--std-spacing-y) var(--std-spacing-x);
@@ -86,7 +87,7 @@ main.wch-main {
   .prel;
   .vw100;
   .bbox;
-  height: calc(100vh - var(--header-height));
+  height: calc(100vh - var(--header-height) - var(--adbar-height));
   margin-top: var(--header-height);
   color: var(--main-color);
   font-size: var(--font-size);

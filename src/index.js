@@ -8,7 +8,7 @@ import { initConfig } from './redux/actions';
 import { HashRouter as Router } from 'react-router-dom';
 import MainRoute from './routes/MainRoute.jsx';
 
-import { Setup } from './components';
+import { AdBar, Setup } from './components';
 
 import './index.less';
 
@@ -22,6 +22,7 @@ render(
     <Setup />
     <Router>
       <MainRoute />
+      <AdBar />
     </Router>
   </Provider>,
   rootElement
