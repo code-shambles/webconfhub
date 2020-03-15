@@ -1,0 +1,40 @@
+@import (reference) '../../../styles/var.less';
+
+.wch-message {
+  .prel;
+  margin: @std-spacing;
+  padding: (@std-spacing-y / 2) @std-spacing-x;
+  color: var(--main-color);
+  border-radius: @borderRadius-big;
+  background-color: var(--box-bg-color);
+  overflow: hidden;
+  &:before {
+    opacity: 0.1;
+  }
+
+  &.wch-error {
+    color: var(--error-color);
+    &:before {
+      .pseudo;
+      .spanSize;
+      background-color: var(--error-color);
+    }
+  }
+  &.wch-success {
+    color: var(--success-color);
+    &:before {
+      .pseudo;
+      .spanSize;
+      background-color: var(--success-color);
+    }
+  }
+}
+
+@keyframes rotate-spinner {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

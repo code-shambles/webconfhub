@@ -7,18 +7,18 @@ const rooms = [
     id: 'andromeda',
     name: 'Andromeda',
     description:
-      'Andromeda is a conference room with galactic talks the whole day!',
-    /* This is the ID (also referenced to as authentication key) from your livewebinar room */
-    livewebinarId: '123-456-789',
+      'Andromeda is a conference room with cosmic talks the whole day!',
+    /* This is the ID (also referred to as authentication key) from your livewebinar room */
+    livewebinarId: '999-888-777',
   },
   {
     /* Only use lowercase letters, numbers, and the hyphen '-' as id */
     id: 'magellan-cloud',
     name: 'Magellan Cloud',
     description:
-      'Magellan Cloud is a conference room with cosmic talks the whole day!',
-    /* This is the ID (also referenced to as authentication key) from your livewebinar room */
-    livewebinarId: '987-654-321',
+      'Magellan Cloud is a conference room with galactic talks the whole day!',
+    /* This is the ID (also referred to as authentication key) from your livewebinar room */
+    livewebinarId: '111-222-333',
   },
 ];
 

@@ -18,7 +18,7 @@ const mainMenu = {
       id: 'coc',
       text: 'CoC',
       title: 'View Code of Conduct',
-      src: 'https://example.com/#coc/',
+      src: 'https://example.com/#coc',
     },
   ],
   /* Add menu links to external pages. These links are opened in a new window/tab, so the user does not lose the WebConf Hub page */
@@ -26,7 +26,7 @@ const mainMenu = {
     {
       text: 'Slack',
       title: 'Open Slack (new tab)',
-      href: 'https://example.com/#slack',
+      href: 'http://example.com/#slack',
     },
   ],
 };

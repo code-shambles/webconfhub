@@ -1,0 +1,48 @@
+@import (reference) '../../../styles/var.less';
+
+.wch-loading {
+  .prel;
+  .dflex;
+  align-items: center;
+  justify-content: center;
+  .wh100;
+  & > div {
+    font-size: 24px;
+    font-weight: lighter;
+    text-align: center;
+    white-space: nowrap;
+    & > span {
+      .dinlbl;
+      margin-left: -0.15em;
+      color: transparent;
+      font-size: 6em;
+      line-height: 0;
+      text-shadow: 0.1em 0 0 rgba(255, 255, 255, 1),
+        0.2em 0 0 rgba(255, 255, 255, 0.7), 0.3em 0 0 rgba(255, 255, 255, 0.2);
+      animation: loadinganim 1000ms linear infinite;
+    }
+  }
+}
+
+@keyframes loadinganim {
+  0% {
+    text-shadow: 0.1em 0 0 rgba(255, 255, 255, 1),
+      0.2em 0 0 rgba(255, 255, 255, 0.2), 0.3em 0 0 rgba(255, 255, 255, 0.2);
+  }
+  25% {
+    text-shadow: 0.1em 0 0 rgba(255, 255, 255, 0.2),
+      0.2em 0 0 rgba(255, 255, 255, 1), 0.3em 0 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    text-shadow: 0.1em 0 0 rgba(255, 255, 255, 0.2),
+      0.2em 0 0 rgba(255, 255, 255, 0.2), 0.3em 0 0 rgba(255, 255, 255, 1);
+  }
+  75% {
+    text-shadow: 0.1em 0 0 rgba(255, 255, 255, 0.2),
+      0.2em 0 0 rgba(255, 255, 255, 0.2), 0.3em 0 0 rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    text-shadow: 0.1em 0 0 rgba(255, 255, 255, 1),
+      0.2em 0 0 rgba(255, 255, 255, 0.2), 0.3em 0 0 rgba(255, 255, 255, 0.2);
+  }
+}

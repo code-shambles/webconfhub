@@ -1,11 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import './RoomPage.less';
+import { Loading } from '../../';
 
-const LWR_BODY_SCRIPT_SRC =
-  'https://embed.livewebinar.com/widget/wea/wea.min.js';
+import './RoomPage.less';
 
 const roomExists = room => room && room.livewebinarId;
 
@@ -16,84 +15,48 @@ const renderError = room =>
     </p>
   );
 
-const initLwrWidget = i => {
-  /* partial code from livewebinar.com embedding snippet */
-  (i.Widget = function(c) {
-    'function' == typeof c && i.Widget.__cbs.push(c),
-      i.Widget.initialized &&
-        (i.Widget.__cbs.forEach(function(i) {
-          i();
-        }),
-        (i.Widget.__cbs = []));
-  }),
-    (i.Widget.__cbs = []);
-};
+const renderLwrIframe = (loading, registered, invitation, room) => {
+  let src = `https://app.livewebinar.com/${room.livewebinarId}`;
 
-const getLwrScriptSrc = room => {
-  /* partial code from livewebinar.com embedding snippet */
-  const options = {
-    _license_key: room.livewebinarId,
-    _role_token: '',
-    _registration_token: '',
-    _widget_containerID: 'embedWidget',
-    _widget_width: '100%',
-    _widget_height: '100%',
-  };
+  if (invitation) {
+    if (invitation.regToken) src += `/p/${invitation.regToken}`;
+    if (
+      invitation.passToken &&
+      invitation.registrationStatus !== 'success' &&
+      invitation.registrationStatus !== 'settled'
+    ) {
+      src += `?_password_token=${invitation.passToken}`;
+    }
+  }
 
-  return (
-    'https://embed.livewebinar.com/em?t=' +
-    options['_license_key'] +
-    '&' +
-    Object.keys(options)
-      .reduce(function(a, k) {
-        a.push(k + '=' + encodeURIComponent(options[k]));
-        return a;
-      }, [])
-      .join('&')
+  //return registered && !loading ? <pre>{src}</pre> : <Loading />;
+  return registered && !loading ? (
+    <iframe src={src} allowFullScreen></iframe>
+  ) : (
+    <Loading />
   );
 };
 
-const RoomPage = ({ room }) => {
-  const refContainer = useRef(null);
-
-  useEffect(() => {
-    if (roomExists(room)) {
-      const script = document.createElement('script');
-
-      script.innerText = room.livewebinarId;
-      script.src = getLwrScriptSrc(room);
-      script.async = true;
-
-      refContainer.current.appendChild(script);
-      initLwrWidget(window);
-
-      return () => {
-        refContainer.current.innerHTML = '';
-        const lwrBodyScript = document.querySelector(
-          `script[src='${LWR_BODY_SCRIPT_SRC}']`
-        );
-        if (lwrBodyScript) {
-          document
-            .querySelector(`script[src='${LWR_BODY_SCRIPT_SRC}']`)
-            .remove();
-        }
-      };
-    }
-  }, [room.livewebinarId]);
+const RoomPage = ({ loading, registered, invitations, room }) => {
+  const invitation = invitations[room.livewebinarId];
 
   return (
-    <main id="room" className="wch-main">
-      <section ref={refContainer}>{renderError(room)}</section>
+    <main id="wch-room" className="wch-main">
+      {renderLwrIframe(loading, registered, invitation, room)}
+      {renderError(room)}
     </main>
   );
 };
 
 const mapStateToProps = (state, ownProps) => {
+  const roomId = ownProps.match.params.roomId;
+
   return {
+    loading: state.app.loading,
+    registered: state.app.registered,
+    invitations: { ...state.invitations },
     room: {
-      ...state.config.rooms.find(
-        room => room.id === ownProps.match.params.roomId
-      ),
+      ...state.config.rooms.find(room => room.id === roomId),
     },
   };
 };

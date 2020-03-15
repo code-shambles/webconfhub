@@ -1,0 +1,50 @@
+@import (reference) '../../../styles/var.less';
+
+#wch-link-display {
+  @buttonSize: 28px;
+  @linkHeight: 40px;
+
+  .prel;
+  margin: 0 1vw;
+
+  & > button {
+    .mp0;
+    width: @buttonSize;
+    height: @buttonSize;
+    line-height: @buttonSize;
+    text-align: center;
+    font-size: @fontSize;
+    background-color: transparent;
+    border: 1px solid var(--menu-link-color);
+    color: var(--menu-link-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: inherit, border-color 200ms ease;
+    &:active,
+    &:focus,
+    &:hover {
+      color: var(--menu-link-color-active);
+      border-color: var(--menu-link-color-active);
+    }
+  }
+  > input {
+    .dnone;
+    .pabs;
+    top: @buttonSize + 6px;
+    right: 0;
+    width: 90vw;
+    height: @linkHeight;
+    padding: 0 @std-spacing-x;
+    font-size: 1.6rem;
+    color: var(--main-color);
+    background: var(--overlay-bg-color);
+    border: 1px solid var(--menu-link-color);
+    border-radius: @borderRadius-big;
+    box-shadow: 0 3px 8px hsla(0, 0%, 0%, 0.3);
+  }
+  &.wch-display-link-open {
+    > input {
+      .dbl;
+    }
+  }
+}

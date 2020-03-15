@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
+import { LinkDisplay } from '../../';
 
 import './MainNav.less';
 
@@ -64,28 +65,19 @@ const renderExternalItems = externalLinks =>
       ))
     : null;
 
-const MainNav = ({ branding, mainMenu, rooms, locationPath }) => {
-  useEffect(() => {
-    document.title = `${branding.name} | WebConf Hub`;
-  }, [branding.name]);
-
+const MainNav = ({ branding, mainMenu, invitations, rooms, locationPath }) => {
   return (
     <header id="wch-header">
+      <NavLink to="/" title={branding.logo.title} id="wch-logo-link">
+        <img id="wch-logo" src={branding.logo.src} alt={branding.logo.alt} />
+      </NavLink>
       <nav>
         <ul>
-          <li>
-            <NavLink to="/" title={branding.logo.title} id="wch-logo-link">
-              <img
-                id="wch-logo"
-                src={branding.logo.src}
-                alt={branding.logo.alt}
-              />
-            </NavLink>
-          </li>
           {renderRoomItems(rooms)}
           {renderLayerItems(mainMenu.layerLinks, locationPath)}
           {renderExternalItems(mainMenu.externalLinks)}
         </ul>
+        <LinkDisplay />
       </nav>
     </header>
   );
@@ -93,7 +85,10 @@ const MainNav = ({ branding, mainMenu, rooms, locationPath }) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    app: { ...state.app },
+    baseConfig: { ...state.config.baseConfig },
     branding: { ...state.config.branding },
+    invitations: { ...state.invitations },
     rooms: [...state.config.rooms],
     mainMenu: { ...state.config.mainMenu },
     locationPath: ownProps.location.pathname,

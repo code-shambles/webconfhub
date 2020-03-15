@@ -2,17 +2,17 @@
 
 .wch-overlay {
   .pfix;
-  top: calc(var(--header-height) + var(--std-spacing-y));
-  left: var(--std-spacing-x);
-  right: var(--std-spacing-x);
-  bottom: var(--std-spacing-y);
+  top: calc(var(--header-height) + @std-spacing-y);
+  left: @std-spacing-x;
+  right: @std-spacing-x;
+  bottom: @std-spacing-y;
   z-index: -999;
-  padding: calc(var(--std-spacing-y) / 2) calc(var(--std-spacing-x) / 2);
+  padding: (@std-spacing-y / 2) (@std-spacing-x / 2);
   background-color: var(--overlay-bg-color);
   border: 1px solid hsla(0, 0%, 100%, 0.15);
   border-radius: 10px;
-  box-shadow: 0 0 calc(var(--std-spacing-x) * 3) var(--std-spacing-x)
-    rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 (@std-spacing-x * 3) (@std-spacing-x * 3)
+    rgba(50, 50, 50, 0.7);
   &.wch-open {
     z-index: 999997;
   }

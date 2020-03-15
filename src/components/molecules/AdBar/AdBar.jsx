@@ -32,7 +32,7 @@ const prepareAds = sponsors => {
       sponsor.ads.forEach(ad => {
         ads.push({
           company: sponsor.company,
-          logo: sponsor.company.logo,
+          logo: sponsor.logo,
           ...ad,
         });
       });

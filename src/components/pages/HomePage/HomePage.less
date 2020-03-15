@@ -1,8 +1,8 @@
 @import (reference) '../../../styles/var.less';
 
 main#wch-home {
-  --section-padding-x: calc(var(--std-spacing-x) * 1.5);
-  --section-padding-y: var(--std-spacing-y);
+  --section-padding-x: calc(@std-spacing-x * 1.5);
+  --section-padding-y: @std-spacing-y;
   --section-padding: var(--section-padding-y) var(--section-padding-x);
   --item-padding-x: 2vw;
   --item-padding-y: 2vh;
@@ -24,7 +24,6 @@ main#wch-home {
       margin: var(--item-padding-y) 0 0;
       li {
         a {
-          --heading-height: 40px;
           .prel;
           .bbox;
           display: block;
@@ -36,9 +35,8 @@ main#wch-home {
           text-align: center;
           color: var(--main-bg-color);
           background-color: var(--room-color);
-          background-image: linear-gradient(-30deg, #00000033, #ffffff33);
           transition: background-color 200ms ease;
-          border-radius: 12px;
+          border-radius: @borderRadius-big;
           &:hover,
           &:focus {
             background-color: var(--room-color-active);

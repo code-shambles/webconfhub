@@ -2,10 +2,13 @@
 
 /* atoms */
 import Button from './atoms/Button';
-import Room from './atoms/Room';
+import Loading from './atoms/Loading';
+import Message from './atoms/Message';
+import Spinner from './atoms/Spinner';
 
 /* molecules */
 import AdBar from './molecules/AdBar';
+import LinkDisplay from './molecules/LinkDisplay';
 
 /* organisms */
 import MainNav from './organisms/MainNav';
@@ -21,4 +24,16 @@ import HomePage from './pages/HomePage';
 
 import Setup from './misc/Setup';
 
-export { Button, Room, AdBar, MainNav, Overlay, RoomPage, HomePage, Setup };
+export {
+  Button,
+  Loading,
+  Message,
+  Spinner,
+  AdBar,
+  LinkDisplay,
+  MainNav,
+  Overlay,
+  RoomPage,
+  HomePage,
+  Setup,
+};

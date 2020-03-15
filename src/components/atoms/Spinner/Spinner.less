@@ -1,0 +1,16 @@
+@import (reference) '../../../styles/var.less';
+
+.wch-spinner {
+  .dinlbl;
+
+  animation: rotate-spinner @a7n-dur-slow*4 linear infinite;
+}
+
+@keyframes rotate-spinner {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

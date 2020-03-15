@@ -1,34 +1,46 @@
 @import (reference) '../../../styles/var.less';
 
 #wch-header {
-  --logo-height: 50px;
+  @header-logoHeight: 50px;
+  @header-lineHeight: 2.2rem;
+  @header-fontSize: @fontSize-lg;
 
-  position: fixed;
+  .dflex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .bbox;
+  .pfix;
   top: 0;
   right: 0;
   left: 0;
   z-index: 999999;
   height: var(--header-height);
-  box-sizing: border-box;
-  font-size: var(--header-font-size);
+  font-size: @header-fontSize;
   background-color: var(--header-bg-color);
   background-image: var(--header-bg-image);
   background-size: cover;
   background-position: center;
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.15);
-  nav ul {
+  nav {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    height: var(--header-height);
+    flex-grow: 1;
+    ul {
+      display: flex;
+      align-items: center;
+      height: var(--header-height);
+    }
   }
   #wch-logo-link {
     display: block;
-    height: var(--logo-height);
+    height: @header-logoHeight;
     margin: 0 1vw;
   }
   #wch-logo {
     display: inline-block;
-    height: var(--logo-height);
+    height: @header-logoHeight;
   }
   a,
   button {
@@ -37,14 +49,14 @@
     transition: background-color 200ms ease, color 200ms ease;
     &:hover,
     &:focus {
-      color: var(--link-color-active);
+      color: var(--menu-link-color-active);
     }
   }
   .wch-navlink {
     display: inline-block;
     padding: 0.5rem 1rem;
-    font-size: var(--header-font-size);
-    line-height: var(--header-line-height);
+    font-size: @header-fontSize;
+    line-height: @header-lineHeight;
     color: var(--menu-link-color);
     border-radius: 2px;
     border: 1px solid transparent;
@@ -62,7 +74,7 @@
     }
 
     i {
-      margin-left: calc(var(--header-font-size) / 4);
+      margin-left: @header-fontSize / 4;
       vertical-align: middle;
       font-size: 0.75em;
       line-height: 0;
@@ -71,12 +83,13 @@
     &.wch-navlink-room {
       margin-right: 1rem;
       color: var(--room-color);
+      background-color: rgba(0, 0, 0, 0.15);
       border-color: var(--room-color);
       i {
         margin-left: 0;
-        margin-right: calc(var(--header-font-size) / 4);
+        margin-right: @header-fontSize / 4;
         vertical-align: middle;
-        font-size: 1.5em;
+        font-size: 1em;
         line-height: 0;
       }
       &.wch-active,
@@ -85,12 +98,6 @@
         color: var(--header-bg-color);
         background-color: var(--room-color);
       }
-    }
-
-    &.wch-navlink-layer {
-    }
-
-    &.wch-navlink-external {
     }
   }
 }
