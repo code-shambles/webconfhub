@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { MainNav, Overlay, HomePage, RoomPage } from '../components';
+import { MainNav, Overlay, HomePage, RoomPage, ToolPage } from '../components';
 
 const MainRoute = () => (
   <Switch key="switch">
@@ -16,6 +16,9 @@ const MainRoute = () => (
       </Route>
       <Route path="/room/:roomId">
         <RoomPage />
+      </Route>
+      <Route path="/tools">
+        <ToolPage />
       </Route>
     </Route>
   </Switch>

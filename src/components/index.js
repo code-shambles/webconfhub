@@ -11,12 +11,14 @@ import AdBar from './molecules/AdBar';
 import LinkDisplay from './molecules/LinkDisplay';
 
 /* organisms */
+import AccessLinkGenerator from './organisms/AccessLinkGenerator';
 import MainNav from './organisms/MainNav';
 import Overlay from './organisms/Overlay';
 
 /* pages */
 import RoomPage from './pages/RoomPage';
 import HomePage from './pages/HomePage';
+import ToolPage from './pages/ToolPage';
 
 /* templates */
 
@@ -31,9 +33,11 @@ export {
   Spinner,
   AdBar,
   LinkDisplay,
+  AccessLinkGenerator,
   MainNav,
   Overlay,
   RoomPage,
   HomePage,
+  ToolPage,
   Setup,
 };

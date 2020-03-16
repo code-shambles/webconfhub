@@ -163,7 +163,7 @@ const performRegistration = (livewebinarRoomId, invitation) => {
 
   iframe.src = src;
   iframe.className = 'wch-registration-hidden';
-  document.body.appendChild(iframe);
+  //document.body.appendChild(iframe);
   iframe.onload = () => {
     iframeLoaded = true;
   };

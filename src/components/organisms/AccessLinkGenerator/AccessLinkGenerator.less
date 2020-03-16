@@ -1,0 +1,55 @@
+@import (reference) '../../../styles/var.less';
+
+#wch-accesslinkgenerator {
+  .wch-accesslinkgenerator-inputs {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-column-gap: 2%;
+    grid-row-gap: 2%;
+  }
+  article {
+    .prel;
+    margin: @std-spacing-y 0;
+  }
+  pre {
+    overflow: scroll;
+    font-size: @fontSize-sm;
+    margin: @std-spacing-y / 2 0;
+    padding: @std-spacing-y / 2 @std-spacing-x / 2;
+    border: 1px solid #333;
+    background: var(--main-bg-color);
+    opacity: 0.5;
+  }
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid @clr-border-light;
+    border-radius: @borderRadius;
+    background: var(--main-bg-color);
+    color: @clr-text;
+    white-space: nowrap;
+    font-family: monospace;
+    padding: 6px 3px;
+  }
+  textarea {
+    height: 25vw;
+    min-height: 250px;
+  }
+  .wch-rowcount {
+    .pabs;
+    right: 0;
+    bottom: 0;
+    padding: 5px;
+    background: #555;
+    opacity: 0.8;
+    font-size: @fontSize-xs;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #wch-accesslinkgenerator {
+    .wch-accesslinkgenerator-inputs {
+      grid-template-columns: 49% 49%;
+    }
+  }
+}
