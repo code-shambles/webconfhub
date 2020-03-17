@@ -1,7 +1,7 @@
 @import (reference) './styles/var.less';
 
 :root {
-  --header-height: 60px;
+  --header-height: @headerHeight;
   --header-bg-color: @clr-header-bg;
   --header-bg-image: 'none';
   --link-color: @clr-link;
@@ -26,7 +26,7 @@ body {
   height: 100vh;
   overflow: hidden;
   font-family: sans-serif;
-  font-size: 10px;
+  font-size: 8px;
   font-weight: lighter;
 }
 
@@ -35,7 +35,7 @@ h2,
 h3,
 h4,
 h5 {
-  margin-top: 0;
+  margin: 0 0 0.6em;
   font-weight: lighter;
 }
 h1 {
@@ -72,6 +72,10 @@ ul {
   }
 }
 
+p {
+  margin: 1em 0;
+}
+
 hr {
   border: 0 none;
   .border(top);
@@ -101,4 +105,30 @@ main.wch-main {
 
 .wch-hidden {
   .dnone;
+}
+
+@media only screen and (min-width: @screen-sm-min) {
+  :root {
+    --adbar-height: 60px;
+  }
+}
+
+@media only screen and (min-width: @screen-md-min) {
+  html,
+  body {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (min-width: @screen-lg-min) {
+  :root {
+    --adbar-height: 70px;
+  }
+}
+
+@media only screen and (min-width: @screen-xl-min) {
+  html,
+  body {
+    font-size: 10px;
+  }
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './AdBar.less';
 
-const ROTATION_SPEED = 10000;
+const ROTATION_SPEED = 1000 * 60 * 3; // 3 minutes
 
 const shuffleAds = ads => {
   let currentIndex = ads.length;
@@ -62,17 +62,44 @@ const renderAdd = ad => {
 const AdBar = ({ sponsors }) => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [ads, setAds] = useState(prepareAds(sponsors));
+  const [a7nClass, setA7nClass] = useState('wch-a7n-fade-out');
+
+  // useEffect(() => {
+  //   let rotationTimer;
+
+  //   return () => {
+  //     clearTimeout(rotationTimer);
+  //   };
+  // }, [currentAdIndex]);
 
   useEffect(() => {
-    window.setTimeout(() => {
-      let nextIndex = currentAdIndex + 1;
-      if (nextIndex >= ads.length) nextIndex = 0;
-      setCurrentAdIndex(nextIndex);
-    }, ROTATION_SPEED);
+    let a7nOutTimer = null;
+    let a7nInTimer = null;
+    let rotationTimer = null;
+
+    setA7nClass('wch-a7n-fade-in');
+
+    a7nInTimer = setTimeout(() => {
+      setA7nClass('');
+      rotationTimer = window.setTimeout(() => {
+        setA7nClass('wch-a7n-fade-out');
+        a7nOutTimer = setTimeout(() => {
+          setCurrentAdIndex(
+            currentAdIndex + 1 === ads.length ? 0 : currentAdIndex + 1
+          );
+        }, 800);
+      }, ROTATION_SPEED);
+    }, 800);
+
+    return () => {
+      clearTimeout(a7nOutTimer);
+      clearTimeout(a7nInTimer);
+      clearTimeout(rotationTimer);
+    };
   }, [currentAdIndex]);
 
   return (
-    <aside className="wch-adbar">
+    <aside className={`wch-adbar ${a7nClass}`}>
       <header>
         Sponsor <i className="lni lni-star"></i>
       </header>

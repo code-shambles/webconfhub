@@ -1,17 +1,20 @@
 @import (reference) '../../../styles/var.less';
 
-#wch-link-display {
-  @buttonSize: 28px;
-  @linkHeight: 40px;
+@linkDisplay-buttonSize: 28px;
+@linkDisplay-linkHeight: 40px;
 
+#wch-link-display {
   .prel;
-  margin: 0 1vw;
+  .bbox;
+  padding: 8px;
+  .m0;
+  .vw100;
 
   & > button {
     .mp0;
-    width: @buttonSize;
-    height: @buttonSize;
-    line-height: @buttonSize;
+    width: @linkDisplay-buttonSize;
+    height: @linkDisplay-buttonSize;
+    line-height: @linkDisplay-buttonSize;
     text-align: center;
     font-size: @fontSize;
     background-color: transparent;
@@ -30,10 +33,10 @@
   > input {
     .dnone;
     .pabs;
-    top: @buttonSize + 6px;
+    top: 2px;
     right: 0;
     width: 90vw;
-    height: @linkHeight;
+    height: @linkDisplay-linkHeight;
     padding: 0 @std-spacing-x;
     font-size: 1.6rem;
     color: var(--main-color);
@@ -45,6 +48,20 @@
   &.wch-display-link-open {
     > input {
       .dbl;
+    }
+  }
+}
+
+@media only screen and (min-width: @screen-md-min) {
+  #wch-link-display {
+    .dbl;
+    margin: 0 1vw;
+    width: auto;
+    background-color: transparent;
+    background-image: none;
+    border: 0 none;
+    > input {
+      top: @linkDisplay-buttonSize + 6px;
     }
   }
 }

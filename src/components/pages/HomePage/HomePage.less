@@ -33,6 +33,7 @@ main#wch-home {
             calc(var(--item-padding-x) * 2)
             calc(var(--item-padding-y) * 1.5 + 50px);
           text-align: center;
+          font-size: @fontSize-lg;
           color: var(--main-bg-color);
           background-color: var(--room-color);
           transition: background-color 200ms ease;
@@ -42,13 +43,13 @@ main#wch-home {
             background-color: var(--room-color-active);
           }
           > i {
-            font-size: 12vw;
+            font-size: @fontSize-xl * 3;
             color: @clr-light;
           }
           h3 {
-            font-size: 4vw;
+            font-size: @fontSize-xl * 1.5;
             color: @clr-light;
-            margin-bottom: 1vw;
+            margin: 0.3em 0 0.6em;
           }
           p {
             margin: 0;
@@ -56,8 +57,8 @@ main#wch-home {
           .wch-btn {
             .pabs;
             bottom: calc(var(--item-padding-y) * 1.5);
-            width: 110px;
-            left: calc(50% - 55px);
+            width: 40%;
+            left: 30%;
           }
         }
       }
@@ -65,7 +66,7 @@ main#wch-home {
   }
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: @screen-sm-min) {
   main#wch-home {
     .wch-rooms {
       ul {
@@ -74,11 +75,45 @@ main#wch-home {
     }
   }
 }
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: @screen-md-min) {
   main#wch-home {
     .wch-rooms {
       ul {
         grid-template-columns: 32% 32% 32%;
+      }
+    }
+  }
+}
+@media only screen and (min-width: @screen-lg-min) {
+  main#wch-home {
+    .wch-rooms {
+      ul {
+        grid-template-columns: 24% 24% 24% 24%;
+        li {
+          a {
+            > i {
+            }
+            h3 {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: @screen-xl-min) {
+  main#wch-home {
+    .wch-rooms {
+      ul {
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        li {
+          a {
+            > i {
+            }
+            h3 {
+            }
+          }
+        }
       }
     }
   }
