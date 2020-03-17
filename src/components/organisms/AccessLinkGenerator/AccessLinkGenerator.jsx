@@ -51,10 +51,10 @@ const countRows = str => {
 const parseLwrLink = lrwLink => {
   const roomMatches = lrwLink.match(LWR_ROOM_REGEX);
   const regTokenMatches = lrwLink.match(REG_TOKEN_REGEX);
-  const passTokenMatches = lrwLink.match(PASS_TOKEN_REGEX)[1];
-  const roomId = roomMatches[1] || null;
-  const regToken = regTokenMatches[1] || null;
-  const passToken = passTokenMatches[1] || null;
+  const passTokenMatches = lrwLink.match(PASS_TOKEN_REGEX);
+  const roomId = roomMatches ? roomMatches[1] : null;
+  const regToken = regTokenMatches ? regTokenMatches[1] : null;
+  const passToken = passTokenMatches ? passTokenMatches[1] : null;
 
   return { roomId, regToken, passToken };
 };
@@ -197,7 +197,6 @@ const AccessLinkGenerator = ({ rooms }) => {
       >
         Generate CSV and JSON
       </Button>
-      {step4}
     </Message>
   ) : null;
 
