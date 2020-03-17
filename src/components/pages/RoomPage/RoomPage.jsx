@@ -31,7 +31,10 @@ const renderLwrIframe = (loading, registered, invitation, room) => {
 
   //return registered && !loading ? <pre>{src}</pre> : <Loading />;
   return registered && !loading ? (
-    <iframe src={src} allowFullScreen></iframe>
+    <iframe
+      src={src}
+      allow="microphone; camera; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; display-capture"
+    ></iframe>
   ) : (
     <Loading />
   );
