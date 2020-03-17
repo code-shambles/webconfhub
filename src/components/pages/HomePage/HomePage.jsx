@@ -87,7 +87,7 @@ const HomePage = ({ baseConfig, rooms, invitations }) => {
     <main id="wch-home" className="wch-main">
       <section className="wch-welcome">
         <h1>{baseConfig.name}</h1>
-        <h3>{baseConfig.welcome}</h3>
+        <p>{baseConfig.welcome}</p>
       </section>
       {renderRegistrations(rooms, invitations)}
       <section className="wch-rooms">
