@@ -18,6 +18,7 @@
   --std-spacing-x: 2vw;
   --std-spacing-y: 2vh;
   --std-spacing: @std-spacing-y @std-spacing-x;
+  --font-weight: normal;
 }
 html,
 body {
@@ -27,7 +28,7 @@ body {
   overflow: hidden;
   font-family: sans-serif;
   font-size: 8px;
-  font-weight: lighter;
+  font-weight: var(--font-weight);
 }
 
 h1,
@@ -36,7 +37,7 @@ h3,
 h4,
 h5 {
   margin: 0 0 0.6em;
-  font-weight: lighter;
+  font-weight: var(--font-weight);
 }
 h1 {
   font-size: 3.4rem;
@@ -114,6 +115,9 @@ main.wch-main {
 }
 
 @media only screen and (min-width: @screen-md-min) {
+  :root {
+    --font-weight: lighter;
+  }
   html,
   body {
     font-size: 9px;
