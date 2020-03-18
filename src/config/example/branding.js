@@ -3,9 +3,9 @@
 /* Adjust this to your conference look and feel */
 const branding = {
   /* Used as html title and on the home page */
-  name: `FrontConf ${new Date().getUTCFullYear()}`,
+  name: `AwesomeRockstarConf ${new Date().getUTCFullYear()}`,
   /* Used on the home page */
-  welcome: `Welcome all attendees and sponsors! We hope you'll have an awesome web conference. Check out our streaming rooms Saturn and Neptune!`,
+  welcome: `Welcome all attendees and sponsors! We hope you'll have an awesome web conference. Check out our streaming rooms Andromeda and Magellan Cloud!`,
   /* Used in the header */
   logo: {
     /* Use an https web URL to the logo file or a data:image/png;base64 value! */
