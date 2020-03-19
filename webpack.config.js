@@ -6,15 +6,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: './',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
-        use: ['babel-loader']
-      }, {
+        use: ['babel-loader'],
+      },
+      {
         test: /\.less$/,
         use: [
           {
@@ -27,17 +28,18 @@ module.exports = {
             loader: 'less-loader', // compiles Less to CSS
           },
         ],
-      }, {
+      },
+      {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'fonts/'
-            }
-          }
-        ]
+              outputPath: 'fonts/',
+            },
+          },
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -46,21 +48,21 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/images/'
-            }
-          }
+              outputPath: 'assets/images/',
+            },
+          },
         ],
       },
-    ]
+    ],
   },
   devServer: {
-    contentBase:  path.resolve(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, 'dist'),
     historyApiFallback: true,
-    port: 9000
+    port: 9000,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html" //source html
-    })
-  ]
+      template: 'src/index.html', //source html
+    }),
+  ],
 };
