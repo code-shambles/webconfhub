@@ -101,6 +101,15 @@ const generateAccessLink = (url, emailInvData) => {
 const generateInvitationsJson = (url, invitationDataByEmail) => {
   return Object.keys(invitationDataByEmail).map(email => ({
     email: email,
+    name:
+      invitationDataByEmail[email][0].firstName &&
+      invitationDataByEmail[email][0].lastName
+        ? invitationDataByEmail[email][0].firstName +
+          ' ' +
+          invitationDataByEmail[email][0].lastName
+        : invitationDataByEmail[email][0].firstName ||
+          invitationDataByEmail[email][0].lastName ||
+          '',
     accessLink: generateAccessLink(url, invitationDataByEmail[email]),
   }));
 };
