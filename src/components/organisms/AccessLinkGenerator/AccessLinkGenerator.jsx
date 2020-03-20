@@ -150,7 +150,7 @@ const AccessLinkGenerator = ({ rooms, baseConfig }) => {
 
   const livewebinarTextareas = rooms.map(room =>
     Textarea(
-      room.name,
+      room.name + ' | ' + room.livewebinarId,
       '',
       invitationCsv => {
         setLwrInvitations({
