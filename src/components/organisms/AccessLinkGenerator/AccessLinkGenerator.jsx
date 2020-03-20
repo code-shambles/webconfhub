@@ -136,9 +136,10 @@ const Textarea = (title, value, onChange, useRowCount = false) => {
   );
 };
 
-const AccessLinkGenerator = ({ rooms }) => {
-  const [url, setUrl] = useState('');
-  const [hasUrl, setHasUrl] = useState(false);
+const AccessLinkGenerator = ({ rooms, baseConfig }) => {
+  const initUrl = baseConfig.url + baseConfig.baseHref;
+  const [url, setUrl] = useState(initUrl);
+  const [hasUrl, setHasUrl] = useState(!!initUrl);
   const [lwrInvitations, setLwrInvitations] = useState({});
   const [hasLwr, setHasLwr] = useState(false);
   const [invitationsOut, setInvitationsOut] = useState({
@@ -253,6 +254,7 @@ const AccessLinkGenerator = ({ rooms }) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     rooms: [...state.config.rooms],
+    baseConfig: { ...state.config.baseConfig },
   };
 };
 
