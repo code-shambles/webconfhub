@@ -13,6 +13,10 @@ const matchRoomRoute = (roomId, locationPath) =>
 
 const getCurrentRoomId = locationPath => ROOM_ROUTE_REGEX.exec(locationPath)[1];
 
+const userHasRoom = (room, invitations) => {
+  return invitations && !!invitations[room.livewebinarId];
+};
+
 const renderRoomItemContent = room => [
   <i
     key="icon"
@@ -24,22 +28,37 @@ const renderRoomItemContent = room => [
   </span>,
 ];
 
-const renderRoomList = (rooms, onClick) =>
-  Array.isArray(rooms) && rooms.length
-    ? rooms.map(room => (
-        <li key={room.id}>
-          <NavLink
-            to={`/room/${room.id}`}
-            className={`wch-navlink wch-navlink-room wch-navlink-room-${room.id}`}
-            activeClassName="wch-active"
-            onClick={onClick}
-            title={room.description}
-          >
-            {renderRoomItemContent(room)}
-          </NavLink>
-        </li>
-      ))
-    : null;
+const renderRoomList = (rooms, onClick, invitations) => {
+  let list = null;
+
+  if (Array.isArray(rooms) && rooms.length) {
+    list = (
+      <ul className={`wch-${rooms[0].type}-rooms`}>
+        {rooms.map(room => {
+          let item = null;
+          if (userHasRoom(room, invitations)) {
+            item = (
+              <li key={room.id}>
+                <NavLink
+                  to={`/room/${room.id}`}
+                  className={`wch-navlink wch-navlink-room wch-navlink-room-${room.id}`}
+                  activeClassName="wch-active"
+                  onClick={onClick}
+                  title={room.description}
+                >
+                  {renderRoomItemContent(room)}
+                </NavLink>
+              </li>
+            );
+          }
+          return item;
+        })}
+      </ul>
+    );
+  }
+
+  return list;
+};
 
 const renderLayerList = (layerLinks, locationPath, onClick) =>
   Array.isArray(layerLinks) && layerLinks.length ? (
@@ -131,7 +150,9 @@ const MainNav = ({ branding, mainMenu, invitations, rooms, locationPath }) => {
       >
         <img id="wch-logo" src={branding.logo.src} alt={branding.logo.alt} />
       </NavLink>
+
       {renderRoomName(rooms, locationPath)}
+
       <nav className={menuOpen ? 'wch-menu-open' : null}>
         <button id="wch-burger">
           <i
@@ -139,18 +160,16 @@ const MainNav = ({ branding, mainMenu, invitations, rooms, locationPath }) => {
             onClick={() => setMenuOpen(!menuOpen)}
           ></i>
         </button>
-        <ul className="wch-track-rooms">
-          {renderRoomList(
-            rooms.filter(room => room.type === 'track'),
-            () => setMenuOpen(false)
-          )}
-        </ul>
-        <ul className="wch-breakout-rooms">
-          {renderRoomList(
-            rooms.filter(room => room.type === 'breakout'),
-            () => setMenuOpen(false)
-          )}
-        </ul>
+        {renderRoomList(
+          rooms.filter(room => room.type === 'track'),
+          () => setMenuOpen(false),
+          invitations
+        )}
+        {renderRoomList(
+          rooms.filter(room => room.type === 'breakout'),
+          () => setMenuOpen(false),
+          invitations
+        )}
 
         {renderLayerList(mainMenu.layerLinks, locationPath, () =>
           setMenuOpen(false)

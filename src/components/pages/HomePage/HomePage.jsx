@@ -7,6 +7,10 @@ import { Button, Message, Spinner } from '../../';
 
 import './HomePage.less';
 
+const userHasRoom = (room, invitations) => {
+  return invitations && !!invitations[room.livewebinarId];
+};
+
 const renderRegistrations = (rooms, invitations) => {
   if (Array.isArray(rooms)) {
     const messages = rooms.map(room => {
@@ -62,25 +66,30 @@ const renderRegistrations = (rooms, invitations) => {
   }
 };
 
-const renderRooms = rooms =>
+const renderRooms = (rooms, invitations) =>
   Array.isArray(rooms) ? (
     <ul>
-      {rooms.map(room => (
-        <li key={room.id} className={`wch-room-tile wch-room-tile-${room.id}`}>
-          <Link to={`/room/${room.id}`}>
-            <i
-              className={`lni lni-${
-                room.type === 'breakout' ? 'users' : 'display-alt'
-              }`}
-            ></i>
-            <h3>{room.name}</h3>
-            <p>{room.description}</p>
-            <Button type="black">
-              ENTER <i className="lni lni-angle-double-right"></i>
-            </Button>
-          </Link>
-        </li>
-      ))}
+      {rooms.map(room =>
+        userHasRoom(room, invitations) ? (
+          <li
+            key={room.id}
+            className={`wch-room-tile wch-room-tile-${room.id}`}
+          >
+            <Link to={`/room/${room.id}`}>
+              <i
+                className={`lni lni-${
+                  room.type === 'breakout' ? 'users' : 'display-alt'
+                }`}
+              ></i>
+              <h3>{room.name}</h3>
+              <p>{room.description}</p>
+              <Button type="black">
+                ENTER <i className="lni lni-angle-double-right"></i>
+              </Button>
+            </Link>
+          </li>
+        ) : null
+      )}
     </ul>
   ) : (
     <Message type="error">Config error: No streaming rooms found!</Message>
@@ -96,11 +105,17 @@ const HomePage = ({ baseConfig, rooms, invitations }) => {
       {renderRegistrations(rooms, invitations)}
       <section className="wch-rooms">
         <h2>Track Rooms</h2>
-        {renderRooms(rooms.filter(room => room.type === 'track'))}
+        {renderRooms(
+          rooms.filter(room => room.type === 'track'),
+          invitations
+        )}
       </section>
       <section className="wch-rooms">
         <h2>Breakout Rooms</h2>
-        {renderRooms(rooms.filter(room => room.type === 'breakout'))}
+        {renderRooms(
+          rooms.filter(room => room.type === 'breakout'),
+          invitations
+        )}
       </section>
     </main>
   );
