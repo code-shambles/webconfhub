@@ -13,6 +13,9 @@ main#wch-home {
     padding: calc(var(--section-padding-y) * 2) var(--section-padding-x)
       var(--section-padding-y);
     background-color: var(--box-bg-color);
+    > pre {
+      font-family: sans-serif;
+    }
   }
   .wch-rooms {
     padding: var(--section-padding);
@@ -89,14 +92,6 @@ main#wch-home {
     .wch-rooms {
       ul {
         grid-template-columns: 24% 24% 24% 24%;
-        li {
-          a {
-            > i {
-            }
-            h3 {
-            }
-          }
-        }
       }
     }
   }

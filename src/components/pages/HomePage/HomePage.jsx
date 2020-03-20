@@ -68,7 +68,11 @@ const renderRooms = rooms =>
       {rooms.map(room => (
         <li key={room.id} className={`wch-room-tile wch-room-tile-${room.id}`}>
           <Link to={`/room/${room.id}`}>
-            <i className="lni lni-display-alt"></i>
+            <i
+              className={`lni lni-${
+                room.type === 'breakout' ? 'users' : 'display-alt'
+              }`}
+            ></i>
             <h3>{room.name}</h3>
             <p>{room.description}</p>
             <Button type="black">
@@ -87,12 +91,16 @@ const HomePage = ({ baseConfig, rooms, invitations }) => {
     <main id="wch-home" className="wch-main">
       <section className="wch-welcome">
         <h1>{baseConfig.name}</h1>
-        <p>{baseConfig.welcome}</p>
+        <pre>{baseConfig.welcome}</pre>
       </section>
       {renderRegistrations(rooms, invitations)}
       <section className="wch-rooms">
-        <h2>Streaming Rooms</h2>
-        {renderRooms(rooms)}
+        <h2>Track Rooms</h2>
+        {renderRooms(rooms.filter(room => room.type === 'track'))}
+      </section>
+      <section className="wch-rooms">
+        <h2>Breakout Rooms</h2>
+        {renderRooms(rooms.filter(room => room.type === 'breakout'))}
       </section>
     </main>
   );

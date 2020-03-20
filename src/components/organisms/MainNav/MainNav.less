@@ -4,10 +4,14 @@
 @header-lineHeight: 2.2em;
 @header-fontSize: @fontSize-lg;
 @header-borderBottom: 1px solid hsla(0, 0%, 100%, 0.15);
+@navlink-padding-y: 0.5rem;
+@navlink-padding-x: 1rem;
 
 #wch-header {
   .bbox;
   .pfix;
+  .dflex;
+  align-items: center;
   top: 0;
   right: 0;
   left: 0;
@@ -66,54 +70,6 @@
         a {
           width: 100%;
         }
-        .wch-navlink {
-          .bbox;
-          .dinlbl;
-          padding: 0.5rem 1rem;
-          font-size: @header-fontSize;
-          line-height: @header-lineHeight;
-          color: var(--menu-link-color);
-          border-radius: 2px;
-          border: 1px solid transparent;
-          background-color: transparent;
-          &:hover,
-          &:focus {
-            color: var(--menu-link-color-active);
-            cursor: pointer;
-          }
-          &.wch-active,
-          &.wch-active:hover,
-          &.wch-active:focus {
-            color: var(--header-bg-color);
-            background-color: var(--menu-link-color);
-          }
-
-          i {
-            margin-left: @header-fontSize / 4;
-            vertical-align: middle;
-            font-size: 0.75em;
-            line-height: 0;
-          }
-
-          &.wch-navlink-room {
-            color: var(--room-color);
-            background-color: rgba(0, 0, 0, 0.15);
-            border-color: var(--room-color);
-            i {
-              margin-left: 0;
-              margin-right: @header-fontSize / 4;
-              vertical-align: middle;
-              font-size: 1em;
-              line-height: 0;
-            }
-            &.wch-active,
-            &:hover,
-            &:focus {
-              color: var(--header-bg-color);
-              background-color: var(--room-color);
-            }
-          }
-        }
       }
     }
     #wch-link-display {
@@ -128,6 +84,81 @@
       }
       #wch-link-display {
         .dbl;
+      }
+    }
+  }
+  .wch-navlink {
+    .prel;
+    .bbox;
+    .dinlbl;
+    padding: @navlink-padding-y @navlink-padding-x;
+    font-size: @header-fontSize;
+    line-height: @header-lineHeight;
+    color: var(--menu-link-color);
+    border-radius: 2px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    &:hover,
+    &:focus {
+      color: var(--menu-link-color-active);
+      cursor: pointer;
+    }
+    &.wch-active,
+    &.wch-active:hover,
+    &.wch-active:focus {
+      color: var(--header-bg-color);
+      background-color: var(--menu-link-color);
+    }
+
+    i {
+      margin-left: @header-fontSize / 4;
+      vertical-align: middle;
+      font-size: 0.75em;
+      line-height: 0;
+    }
+
+    &.wch-navlink-room {
+      color: var(--room-color);
+      background-color: rgba(0, 0, 0, 0.15);
+      border-color: var(--room-color);
+      i {
+        margin-left: 0;
+        margin-right: @header-fontSize / 4;
+        vertical-align: middle;
+        font-size: 1em;
+        line-height: 0;
+      }
+      &.wch-active,
+      &:hover,
+      &:focus {
+        color: var(--header-bg-color);
+        background-color: var(--room-color);
+      }
+      .wch-navlink-room-label {
+        .dinlbl;
+        .pabs;
+        bottom: @navlink-padding-y / 2;
+        left: @navlink-padding-x + 2.3em;
+        font-size: @fontSize-xs;
+        line-height: 1em;
+        opacity: 0.7;
+      }
+      &.wch-room-display {
+        .dbl;
+        background-color: transparent;
+        border-color: transparent !important;
+        font-size: 1.5em;
+        &:hover,
+        &:focus {
+          color: inherit;
+          background-color: transparent;
+        }
+        .wch-navlink-room-label {
+          font-size: @fontSize;
+          bottom: auto;
+          left: 4.1rem;
+          top: 0.5rem;
+        }
       }
     }
   }
@@ -181,6 +212,17 @@
         background-color: transparent;
         background-image: none;
         border: 0 none;
+      }
+    }
+    .wch-navlink {
+      &.wch-navlink-room {
+        .wch-navlink-room-label {
+          left: auto;
+          right: @navlink-padding-x;
+        }
+      }
+      &.wch-room-display {
+        .dnone;
       }
     }
   }
