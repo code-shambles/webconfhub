@@ -42,8 +42,9 @@ const renderRoomList = (rooms, onClick) =>
     : null;
 
 const renderLayerList = (layerLinks, locationPath, onClick) =>
-  Array.isArray(layerLinks) && layerLinks.length
-    ? layerLinks.map(link => (
+  Array.isArray(layerLinks) && layerLinks.length ? (
+    <ul className="wch-layer-links">
+      {layerLinks.map(link => (
         <li key={link.id}>
           <NavLink
             exact
@@ -60,26 +61,43 @@ const renderLayerList = (layerLinks, locationPath, onClick) =>
             <i className="lni lni-angle-double-down"></i>
           </NavLink>
         </li>
-      ))
-    : null;
+      ))}
+    </ul>
+  ) : null;
 
-const renderExternalList = (externalLinks, onClick) =>
-  Array.isArray(externalLinks) && externalLinks.length
-    ? externalLinks.map((link, i) => (
-        <li key={i}>
-          <a
-            className={`wch-navlink wch-navlink-external`}
-            href={link.href}
-            title={link.title}
-            target="_blank"
-            onClick={onClick}
-          >
-            {link.text}
-            <i className="lni lni-arrow-top-right"></i>
-          </a>
-        </li>
-      ))
-    : null;
+const renderExternalList = (externalLinks, externalLinksOpen, onClick) =>
+  Array.isArray(externalLinks) && externalLinks.length ? (
+    <div
+      className={`wch-navlink wch-external-links${
+        externalLinksOpen ? ' wch-external-links-open' : ''
+      }`}
+    >
+      <button
+        className="wch-navlink wch-collapse-header"
+        onClick={() => {
+          onClick();
+        }}
+      >
+        Links
+      </button>
+      <ul>
+        {externalLinks.map((link, i) => (
+          <li key={i}>
+            <a
+              className={`wch-navlink wch-navlink-external`}
+              href={link.href}
+              title={link.title}
+              target="_blank"
+              onClick={onClick}
+            >
+              {link.text}
+              <i className="lni lni-arrow-top-right"></i>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : null;
 
 const renderRoomName = (rooms, locationPath) => {
   let currentRoom;
@@ -101,6 +119,7 @@ const renderRoomName = (rooms, locationPath) => {
 
 const MainNav = ({ branding, mainMenu, invitations, rooms, locationPath }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [externalLinksOpen, setExternalLinksOpen] = useState(false);
 
   return (
     <header id="wch-header">
@@ -132,14 +151,14 @@ const MainNav = ({ branding, mainMenu, invitations, rooms, locationPath }) => {
             () => setMenuOpen(false)
           )}
         </ul>
-        <ul className="wch-layer-links">
-          {renderLayerList(mainMenu.layerLinks, locationPath, () =>
-            setMenuOpen(false)
-          )}
-        </ul>
-        <ul className="wch-external-links">
-          {renderExternalList(mainMenu.externalLinks, () => setMenuOpen(false))}
-        </ul>
+
+        {renderLayerList(mainMenu.layerLinks, locationPath, () =>
+          setMenuOpen(false)
+        )}
+        {renderExternalList(mainMenu.externalLinks, externalLinksOpen, () => {
+          setMenuOpen(false);
+          setExternalLinksOpen(!externalLinksOpen);
+        })}
         <LinkDisplay />
       </nav>
     </header>

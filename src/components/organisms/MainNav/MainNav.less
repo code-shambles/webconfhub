@@ -71,6 +71,34 @@
           width: 100%;
         }
       }
+      &.wch-breakout-rooms {
+        li {
+          margin: 0;
+          .wch-navlink {
+            border-radius: 0;
+            border-bottom-width: 0;
+          }
+          &:first-child {
+            .wch-navlink {
+              border-radius: 2px 2px 0 0;
+            }
+          }
+          &:last-child {
+            margin: 0 0 8px;
+            .wch-navlink {
+              border-radius: 0 0 2px 2px;
+              border-bottom-width: 1px;
+            }
+          }
+        }
+      }
+    }
+    .wch-external-links.wch-navlink {
+      padding: 0;
+      border: 0;
+      .wch-collapse-header.wch-navlink {
+        .dnone;
+      }
     }
     #wch-link-display {
       .dnone;
@@ -206,6 +234,46 @@
         li {
           margin: 0 1vw 0 0;
         }
+        &.wch-breakout-rooms {
+          li {
+            margin: 0;
+            .wch-navlink {
+              border-bottom-width: 1px;
+              border-right-width: 0;
+            }
+            &:first-child {
+              .wch-navlink {
+                border-radius: 2px 0 0 2px;
+              }
+            }
+            &:last-child {
+              margin: 0;
+              .wch-navlink {
+                border-radius: 0 2px 2px 0;
+                border-right-width: 1px;
+              }
+            }
+          }
+        }
+      }
+      .wch-external-links.wch-navlink {
+        overflow: hidden;
+        .wch-collapse-header.wch-navlink {
+          .dbl;
+        }
+        ul {
+          .dnone;
+          height: auto;
+          background-color: var(--header-bg-color);
+          border-radius: 2px;
+        }
+        &.wch-external-links-open {
+          overflow: visible;
+          ul {
+            .dbl;
+            .pabs;
+          }
+        }
       }
       #wch-link-display {
         .dbl;
@@ -223,6 +291,25 @@
       }
       &.wch-room-display {
         .dnone;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: @screen-lg-min) {
+  #wch-header {
+    nav {
+      .wch-external-links.wch-navlink {
+        .dbl;
+        .wch-collapse-header.wch-navlink {
+          .dnone;
+        }
+        ul {
+          .dflex;
+          flex-direction: row;
+          background-color: transparent;
+          border-radius: 0;
+        }
       }
     }
   }
