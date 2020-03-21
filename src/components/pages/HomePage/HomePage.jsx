@@ -107,6 +107,16 @@ const renderZoomRooms = (rooms, invitations) => (
         </Button>
       </a>
     </li>
+    <li className={`wch-room-tile`}>
+      <a href="https://zoom.us/j/4633435304" target="_blank">
+        <i className={`lni lni-display-alt`}></i>
+        <h3>Neptune</h3>
+        <p>Our track Neptune on Zoom!</p>
+        <Button type="black">
+          ENTER <i className="lni lni-angle-double-right"></i>
+        </Button>
+      </a>
+    </li>
   </ul>
 );
 
