@@ -108,7 +108,7 @@ const renderZoomRooms = (rooms, invitations) => (
       </a>
     </li>
     <li className={`wch-room-tile`}>
-      <a href="https://zoom.us/j/4633435304" target="_blank">
+      <a href="https://zoom.us/wc/join/4633435304" target="_blank">
         <i className={`lni lni-display-alt`}></i>
         <h3>Neptune</h3>
         <p>Our track Neptune on Zoom!</p>
