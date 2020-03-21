@@ -84,7 +84,12 @@ const renderLayerList = (layerLinks, locationPath, onClick) =>
     </ul>
   ) : null;
 
-const renderExternalList = (externalLinks, externalLinksOpen, onClick) =>
+const renderExternalList = (
+  externalLinks,
+  externalLinksOpen,
+  onClick,
+  onButtonClick
+) =>
   Array.isArray(externalLinks) && externalLinks.length ? (
     <div
       className={`wch-navlink wch-external-links${
@@ -93,9 +98,7 @@ const renderExternalList = (externalLinks, externalLinksOpen, onClick) =>
     >
       <button
         className="wch-navlink wch-collapse-header"
-        onClick={() => {
-          onClick();
-        }}
+        onClick={onButtonClick}
       >
         Links
       </button>
@@ -174,10 +177,17 @@ const MainNav = ({ branding, mainMenu, invitations, rooms, locationPath }) => {
         {renderLayerList(mainMenu.layerLinks, locationPath, () =>
           setMenuOpen(false)
         )}
-        {renderExternalList(mainMenu.externalLinks, externalLinksOpen, () => {
-          setMenuOpen(false);
-          setExternalLinksOpen(!externalLinksOpen);
-        })}
+        {renderExternalList(
+          mainMenu.externalLinks,
+          externalLinksOpen,
+          () => {
+            setMenuOpen(false);
+            setExternalLinksOpen(false);
+          },
+          () => {
+            setExternalLinksOpen(!externalLinksOpen);
+          }
+        )}
         <LinkDisplay />
       </nav>
     </header>
